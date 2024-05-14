@@ -5,11 +5,12 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView 
-from django.core import serializers
+from django.core import serializers 
 from django.http import HttpResponse
 import json
-from base.models import Slot , Game , User
-from base.serializer import ProfileSerializer , MyTokenObtainPairSerializer , ItemSerializer
+from rest_framework import generics
+from base.models import Slot , Game , User , Item , Credit
+from base.serializer import ProfileSerializer , MyTokenObtainPairSerializer , ItemSerializer ,SlotsSerializer
 from .utils import get_winner_weapon
 
 
@@ -21,8 +22,13 @@ class MyTokenObtainPairView(TokenObtainPairView):
 def get_profile(request):
     user = request.user
     profile = user.profile
+    money = Credit.objects.get(id=profile)
+    # profile.money
     serializer = ProfileSerializer(profile, many=False)
-    return Response(serializer.data)
+
+    data = serializer.data
+    data['money'] = int(money.credit)
+    return HttpResponse(json.dumps(data), content_type="application/json")
 
 
 class Weapon(APIView):
@@ -41,8 +47,6 @@ class Weapon(APIView):
 @permission_classes([IsAuthenticated])
 def run_roulette(request):
     user = request.user
-    print(user)
-    profile = user.profile
     slot_name = request.GET.get('slot_name')
     
     weapon = get_winner_weapon(slot_name)
@@ -56,3 +60,42 @@ def run_roulette(request):
 
     return HttpResponse(json.dumps(weapon.as_json()), content_type="application/json")
 
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_profile_history(request):
+    user = request.user
+    User.objects.get(username=user)
+
+    games = Game.objects.filter(user=user).order_by('-time')
+
+    weapons = []
+
+    for game in games:
+        weapons.append(game.item.as_json())
+
+    
+
+    return HttpResponse(json.dumps(weapons), content_type="application/json")
+
+
+class Slots(generics.ListCreateAPIView):
+
+    # serializer_class = SlotsSerializer
+
+    def get(self, request, format=None):
+        slots = Slot.objects.all()
+
+        names = list()
+        for slot in slots:
+            print(slot.slot_name)
+            names.append(slot.slot_name)
+
+
+        return HttpResponse(json.dumps(names), content_type="application/json")
+
+
+class Balance(APIView):
+
+    def get(self,request, format= None):
+        pass

@@ -27,3 +27,9 @@ class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model=Item
         fields = ('weapon_name')
+
+
+class SlotsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Slot
+        fields = ('slot_name')
