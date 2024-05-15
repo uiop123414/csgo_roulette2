@@ -1,0 +1,35 @@
+version: '3'
+
+
+services:
+  django:
+
+    build: ./backend
+
+    container_name: django
+    
+    # volumes:
+      # - .:/usr/src/app/backend
+    
+    ports:
+      - 8000:8000
+    
+    command: python manage.py runserver 0.0.0.0:8000
+
+  frontend: 
+
+    build: ./frontend
+
+    container_name: frontend
+
+    # volumes:
+      # - .:/usr/src/app/frontend
+    
+    ports:
+      - 3000:3000
+    
+    command: npm start
+
+    depends_on:
+      - django
+  
