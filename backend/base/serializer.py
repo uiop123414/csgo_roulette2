@@ -2,16 +2,19 @@ from rest_framework import serializers
 from base.models import *
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = '__all__'
+        fields = "__all__"
+
 
 class ProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer(many=False, read_only=True)
+
     class Meta:
         model = Profile
-        fields = ('user', 'first_name', 'last_name', 'email')
+        fields = ("user", "first_name", "last_name", "email")
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -19,17 +22,18 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def get_token(cls, user):
         token = super().get_token(user)
 
-        token['username'] = user.username
+        token["username"] = user.username
 
         return token
 
+
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Item
-        fields = ('weapon_name')
+        model = Item
+        fields = "weapon_name"
 
 
 class SlotsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Slot
-        fields = ('slot_name')
+        fields = "slot_name"

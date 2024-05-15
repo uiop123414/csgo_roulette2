@@ -3,43 +3,47 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-import cl from './App.module.scss';
+import cl from "./App.module.scss";
 import McRoulette from "./components/Roulette/McRoulette";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { AuthProvider } from './context/AuthContext'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
 
-import HomePage from './pages/HomePage'
-import LoginPage from './pages/LoginPage'
-import Header from './components/Header'
-import GamesPage from './pages/GamesPage'
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import Header from "./components/Header";
+import GamesPage from "./pages/GamesPage";
 
-import PrivateRoute from './utils/PrivateRoute'
+import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
+  const weaponsCount = 150;
+  const transitionDuration = 10;
 
-    const weaponsCount = 150
-    const transitionDuration = 10
-
-    return (
-        <div className={cl.App}>
-            <div className={cl.wrapper} >
-            <Router>
-            <AuthProvider>
-                <Header/>
-                <Routes>
-                    <Route path="/" element={<PrivateRoute><HomePage/></PrivateRoute>} />
-                    <Route path="/login" element={<LoginPage/>}/>
-                    <Route path="/roulette" element={<McRoulette
-                        transitionDuration={transitionDuration}
-                    />}/>
-                    <Route path="/games" element ={<GamesPage />} />
-                    <Route path="/games/:name" element={<GamesPage />} />
-                </Routes>
-            </AuthProvider>
+  return (
+    <div className={cl.App}>
+      <div className={cl.wrapper}>
+        <Router>
+          <AuthProvider>
+            <Header />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <PrivateRoute>
+                    <HomePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/roulette" element={<McRoulette transitionDuration={transitionDuration} />} />
+              <Route path="/games" element={<GamesPage />} />
+              <Route path="/games/:name" element={<GamesPage />} />
+            </Routes>
+          </AuthProvider>
         </Router>
-            </div>
-        </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default App;

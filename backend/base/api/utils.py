@@ -1,4 +1,3 @@
-
 from base.models import *
 import random
 
@@ -13,6 +12,7 @@ import random
 # covert = red = 3 %
 
 # rare = gold = 2 %
+
 
 def get_winner_weapon(slot_name):
     rarities = {
@@ -32,5 +32,3 @@ def get_winner_weapon(slot_name):
     # for rarity in rarities:
 
     #     print(weapon.rarity)
-    
-

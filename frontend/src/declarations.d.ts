@@ -1,2 +1,2 @@
-declare module '*.scss';
-declare module '*.wav';
+declare module "*.scss";
+declare module "*.wav";

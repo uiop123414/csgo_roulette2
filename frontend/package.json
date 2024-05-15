@@ -19,6 +19,7 @@
     "core-js": "^3.37.0",
     "jwt-decode": "^4.0.0",
     "mdb-react-ui-kit": "^8.0.0",
+    "prettier": "^3.2.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
@@ -34,7 +35,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettify": "prettier --write './src/**/*.{js,json,jsx,ts,tsx,css}'"
   },
   "eslintConfig": {
     "extends": [
