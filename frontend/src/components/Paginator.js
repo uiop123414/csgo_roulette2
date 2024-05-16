@@ -6,6 +6,7 @@ const Paginator = ({ totalPages, currentPage, setCurrentPage }) => {
       const pageNumbers = [];
 
       for (let i = currentPage; i <= currentPage + 4; i++) {
+        
         pageNumbers.push(
           <Pagination.Item key={i} active={i === currentPage} onClick={() => setCurrentPage(i)}>
             {i}
@@ -29,6 +30,8 @@ const Paginator = ({ totalPages, currentPage, setCurrentPage }) => {
       const pageNumbers = [];
 
       for (let i = 0; i < 5; i++) {
+        if(totalPages - i<=0)
+          continue;
         pageNumbers.push(
           <Pagination.Item
             key={totalPages - i}

@@ -10,9 +10,10 @@ import { useDispatch } from "react-redux";
 
 interface RouletteElementParams {
   transitionDuration: number;
+  slot_name: string;
 }
 
-const McRoulette = ({ transitionDuration }: RouletteElementParams) => {
+const McRoulette = ({ transitionDuration ,slot_name}: RouletteElementParams) => {
   const didMount = useRef(false);
 
   const [profile, setProfile] = useState<never>(Object());
@@ -22,7 +23,6 @@ const McRoulette = ({ transitionDuration }: RouletteElementParams) => {
   const [weaponPrizeId, setWeaponPrizeId] = useState<number>(-1);
   const [isReplay, setIsReplay] = useState<boolean>(false);
   const [isSpin, setIsSpin] = useState<boolean>(false);
-  const [isWinnerGet, setIsWinnerGet] = useState<boolean>();
   const [isSpinEnd, setIsSpinEnd] = useState<boolean>(false);
   const [winHistory, setWinHistory] = useState<weaponAttributes[]>([]);
 
@@ -42,7 +42,7 @@ const McRoulette = ({ transitionDuration }: RouletteElementParams) => {
     let response = await fetch(
       "http://127.0.0.1:8000/api/weapon?" +
         new URLSearchParams({
-          slot_name: "CSGO_1",
+          slot_name: slot_name,
         }),
     );
 

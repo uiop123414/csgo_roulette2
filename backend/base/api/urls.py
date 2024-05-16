@@ -14,4 +14,6 @@ urlpatterns = [
     path("profile_history", views.get_profile_history),
     path("run_roulette", views.run_roulette),
     path("slots", Slots.as_view()),
+    path("sell_item",views.sell_item), 
 ]
+

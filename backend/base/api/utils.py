@@ -1,7 +1,10 @@
 from base.models import *
 import random
+import json
+from decimal import Decimal
 
 # uncommon = white
+
 
 # milspec = blue = 80 %
 
@@ -32,3 +35,9 @@ def get_winner_weapon(slot_name):
     # for rarity in rarities:
 
     #     print(weapon.rarity)
+
+
+
+def decimal_to_float_default(obj):
+    if isinstance(obj, Decimal):
+        return float(obj)

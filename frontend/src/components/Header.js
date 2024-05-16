@@ -33,6 +33,7 @@ const Header = () => {
       <Container>
         <Navbar.Brand href="/">Home</Navbar.Brand>
         <Navbar.Toggle />
+        <Nav.Link href="/games">Games</Nav.Link>
         <Nav className="me-auto">
           <Nav.Link href="/roulette">Roulette</Nav.Link>
           {user ? <Nav.Link onClick={logoutUser}>Logout</Nav.Link> : <Nav.Link href="/login">Login</Nav.Link>}

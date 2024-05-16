@@ -14,7 +14,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ("user", "first_name", "last_name", "email")
+        fields = ("user", "first_name", "last_name", "email","credit")
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -30,10 +30,10 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = "weapon_name"
+        fields = ("weapon_name",)
 
 
 class SlotsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Slot
-        fields = "slot_name"
+        fields = ("slot_name", "image",)

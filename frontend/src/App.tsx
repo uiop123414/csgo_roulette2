@@ -12,11 +12,11 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import Header from "./components/Header";
 import GamesPage from "./pages/GamesPage";
+import Admin from "./pages/Admin";
 
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
-  const weaponsCount = 150;
   const transitionDuration = 10;
 
   return (
@@ -35,9 +35,10 @@ function App() {
                 }
               />
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/roulette" element={<McRoulette transitionDuration={transitionDuration} />} />
+              <Route path="/roulette" element={<McRoulette transitionDuration={transitionDuration} slot_name="CSGO_1"/>} />
               <Route path="/games" element={<GamesPage />} />
               <Route path="/games/:name" element={<GamesPage />} />
+              <Route path="/admin" element={<Admin />} />
             </Routes>
           </AuthProvider>
         </Router>

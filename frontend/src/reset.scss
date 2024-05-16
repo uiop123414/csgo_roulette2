@@ -82,4 +82,28 @@ select {
 
 .paginator {
   margin-top: 100px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+div.slots {
+  min-height: 10em;
+  margin-top: 10%;
+  vertical-align: middle
+}
+
+#filter-buttons{
+  width: 50%;
+  margin-left: 5%;
+}
+
+.items-container{
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+.user-data{
+  margin-left: 5%;
+  margin-top: 5%
+  ;
 }

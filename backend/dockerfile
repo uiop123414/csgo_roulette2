@@ -5,3 +5,5 @@ WORKDIR /usr/src/app/backend
 COPY . /usr/src/app/backend/
 
 RUN pip install -r requirements.txt
+
+RUN apt-get update && apt-get install -y  redis-server 

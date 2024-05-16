@@ -16,6 +16,19 @@ services:
     
     command: python manage.py runserver 0.0.0.0:8000
 
+
+  redis:
+
+    image: redis:latest
+
+    restart: always
+
+    ports:
+      - "6379:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+
+
   frontend: 
 
     build: ./frontend
@@ -32,4 +45,6 @@ services:
 
     depends_on:
       - django
-  
+      - redis
+    
+
