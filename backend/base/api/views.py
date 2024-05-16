@@ -26,7 +26,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-@cache_page(60 * 15)
+# @cache_page(60 * 15)
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def get_profile(request):
@@ -50,8 +50,9 @@ class Weapon(APIView):
 
         results = [obj.as_json() for obj in weapons]
 
-        return HttpResponse(json.dumps(results, default=decimal_to_float_default), 
-                            content_type="application/json")
+        return HttpResponse(json.dumps(results, 
+                                default=decimal_to_float_default),
+                                content_type="application/json")
 
 
 @api_view(["POST"])
@@ -73,7 +74,7 @@ def run_roulette(request):
                         content_type="application/json")
 
 
-@cache_page(60 * 15)
+# @cache_page(60 * 15)
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
 def get_profile_history(request):

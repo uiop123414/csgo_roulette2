@@ -12,7 +12,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import Header from "./components/Header";
 import GamesPage from "./pages/GamesPage";
-import Admin from "./pages/Admin";
+import AdminPage from "./pages/AdminPage";
 
 import PrivateRoute from "./utils/PrivateRoute";
 
@@ -38,7 +38,7 @@ function App() {
               <Route path="/roulette" element={<McRoulette transitionDuration={transitionDuration} slot_name="CSGO_1"/>} />
               <Route path="/games" element={<GamesPage />} />
               <Route path="/games/:name" element={<GamesPage />} />
-              <Route path="/admin" element={<Admin />} />
+              <Route path="/admin" element={<AdminPage />} />
             </Routes>
           </AuthProvider>
         </Router>

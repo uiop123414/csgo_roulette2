@@ -102,11 +102,12 @@ const HomePage = () => {
     setSorting(!sorting)
   }
 
-  const sellButton = ({item}) => {
+  const sellButton = (item) => {
     if (!itemStatus) {
       return (
       <Grid item xs={6}>
         <Button onClick={() => {
+          console.log(item)
           profile.credit = parseFloat(profile.credit) + parseFloat(item.cost)
           sellItem(item.game_id)}}>Sell Item</Button>
       </Grid>)
