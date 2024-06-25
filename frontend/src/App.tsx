@@ -35,7 +35,10 @@ function App() {
                 }
               />
               <Route path="/login" element={<LoginPage />} />
-              <Route path="/roulette" element={<McRoulette transitionDuration={transitionDuration} slot_name="CSGO_1"/>} />
+              <Route
+                path="/roulette"
+                element={<McRoulette transitionDuration={transitionDuration} slot_name="CSGO_1" />}
+              />
               <Route path="/games" element={<GamesPage />} />
               <Route path="/games/:name" element={<GamesPage />} />
               <Route path="/admin" element={<AdminPage />} />

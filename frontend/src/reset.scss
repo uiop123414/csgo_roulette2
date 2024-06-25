@@ -7,7 +7,6 @@
   width: 100%;
 }
 
-
 /* Убираем внутренние отступы */
 ul[class],
 ol[class] {
@@ -89,25 +88,24 @@ select {
 div.slots {
   min-height: 10em;
   margin-top: 10%;
-  vertical-align: middle
+  vertical-align: middle;
 }
 
-#filter-buttons{
+#filter-buttons {
   width: 50%;
   margin-left: 5%;
 }
 
-.items-container{
+.items-container {
   margin-top: 5%;
   margin-left: 5%;
 }
 
-.user-data{
+.user-data {
   margin-left: 5%;
-  margin-top: 5%
-  ;
+  margin-top: 5%;
 }
 
-.admin-buttons{
+.admin-buttons {
   margin-top: 5%;
 }

@@ -34,6 +34,7 @@ class Item(models.Model):
 
     def as_json(self):
         return dict(
+            id=self.id.hex,
             weapon_name=self.weapon_name,
             skin_name=self.skin_name,
             rarity=self.rarity,
@@ -89,13 +90,16 @@ class Game(models.Model):
                     )
 
 
-# class Credit(models.Model):
+class Rarity(models.Model):
+    id = models.UUIDField(
+        primary_key=True, default=uuid.uuid4, editable=False, unique=False
+    )
+    name = models.CharField(max_length=50)
+    probability = models.DecimalField(default=0,max_digits=2, decimal_places=2, validators=[MinValueValidator(0.01)])
 
-#     id = models.ForeignKey(Profile, primary_key=True, on_delete=models.CASCADE)
-#     credit = models.DecimalField(max_digits=10, decimal_places=2)
-
-
-# class Cost(models.Model):
-
-#     id = models.ForeignKey(Item, primary_key=True, on_delete=models.CASCADE)
-#     cost = models.DecimalField(max_digits=10, decimal_places=2)
+    def as_json(self):
+        return dict(
+            id = self.id.hex,
+            name = self.name,
+            probability = self.probability,
+        )

@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import "core-js/stable/atob";
 
 import { useNavigate } from "react-router-dom";
-import Alert from 'react-bootstrap/Alert';
+import Alert from "react-bootstrap/Alert";
 
 const AuthContext = createContext();
 
@@ -42,7 +42,6 @@ export const AuthProvider = ({ children }) => {
         alert("Something went wrong while logging in the user!");
       }
     }
-
   };
 
   let logoutUser = () => {

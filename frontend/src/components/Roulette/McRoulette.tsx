@@ -13,7 +13,7 @@ interface RouletteElementParams {
   slot_name: string;
 }
 
-const McRoulette = ({ transitionDuration ,slot_name}: RouletteElementParams) => {
+const McRoulette = ({ transitionDuration, slot_name }: RouletteElementParams) => {
   const didMount = useRef(false);
 
   const [profile, setProfile] = useState<never>(Object());

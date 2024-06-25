@@ -5,12 +5,11 @@ import AuthContext from "../context/AuthContext";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import McRoulette from "../components/Roulette/McRoulette";
-import CardLink from 'react-bootstrap/CardLink'
+import CardLink from "react-bootstrap/CardLink";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
 
 const GamesPage = () => {
-
   const params = useParams();
   const [slots, setSlots] = useState([]);
   const transitionDuration = 10;
@@ -27,44 +26,42 @@ const GamesPage = () => {
 
   console.log("name ", params.name);
 
-  if (typeof params.name !== "undefined"){
-      return (
-          <div>
-          <McRoulette
-              transitionDuration={transitionDuration} slot_name={ params.name}/>
-          </div>
-      )
+  if (typeof params.name !== "undefined") {
+    return (
+      <div>
+        <McRoulette transitionDuration={transitionDuration} slot_name={params.name} />
+      </div>
+    );
   }
 
   //Get slots names
-  else{
-      return (
-        <div className="slots">
-          <Box sx={{ flexGrow: 1 }}>
+  else {
+    return (
+      <div className="slots">
+        <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={4}>
-          {slots.map((w, i) => {
-            return (
+            {slots.map((w, i) => {
+              return (
                 <Grid xs={3}>
                   <Card style={{ width: "18rem" }}>
-                    <CardLink href={"/games/"+w['slot_name']}>
-                      <Card.Img variant="top" src={w['image']} />
+                    <CardLink href={"/games/" + w["slot_name"]}>
+                      <Card.Img variant="top" src={w["image"]} />
                     </CardLink>
                     <Card.Title>
-                      <h1 className="text-danger">Id: {w['slot_name']}</h1>
+                      <h1 className="text-danger">Id: {w["slot_name"]}</h1>
                     </Card.Title>
                     <Card.Text>
-                      <h3 className="text-secondary">
-                      Simple Cs Go container</h3>
-                  </Card.Text>
+                      <h3 className="text-secondary">Simple Cs Go container</h3>
+                    </Card.Text>
                   </Card>
                 </Grid>
-            );
-        })}
-        </Grid>
+              );
+            })}
+          </Grid>
         </Box>
-        </div>
-      );
-    }
+      </div>
+    );
+  }
 };
 
 export default GamesPage;

@@ -8,7 +8,7 @@ import Form from "react-bootstrap/Form";
 const LoginPage = () => {
   let { loginUser } = useContext(AuthContext);
 
-  console.log(loginUser)
+  console.log(loginUser);
 
   return (
     <div id="login">
@@ -20,7 +20,7 @@ const LoginPage = () => {
       <div>
         <Grid container spacing={3} id="grid">
           <Grid item xs={4}>
-            <Form onSubmit={ loginUser}>
+            <Form onSubmit={loginUser}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Username</Form.Label>
                 <Form.Control type="text" placeholder="Enter username" name="username" />
